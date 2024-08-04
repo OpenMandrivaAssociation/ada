@@ -19,6 +19,7 @@ BuildOption: -DFETCHCONTENT_FULLY_DISCONNECTED:BOOL=ON
 BuildOption: -DCPM_SOURCE_CACHE=$(pwd)/../CPM.cmake-0.38.6
 BuildRequires: cmake(fmt)
 BuildRequires: cmake(cxxopts)
+BuildRequires: git-core
 
 %patchlist
 ada-2.9.0-no-downloads.patch
@@ -45,6 +46,8 @@ Development files (Headers etc.) for %{name}.
 # see cmake/CPM.cmake for what needs to be done here to
 # prevent a download
 tar xf %{S:1}
+mkdir CPM.cmake-0.38.6/cpm
+cp CPM.cmake-0.38.6/cmake/CPM.cmake CPM.cmake-0.38.6/cpm
 
 %files
 %{_bindir}/*
