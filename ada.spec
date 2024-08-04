@@ -47,7 +47,7 @@ Development files (Headers etc.) for %{name}.
 # prevent a download
 tar xf %{S:1}
 mkdir CPM.cmake-0.38.6/cpm
-cp CPM.cmake-0.38.6/cmake/CPM.cmake CPM.cmake-0.38.6/cpm
+cp CPM.cmake-0.38.6/cmake/CPM.cmake CPM.cmake-0.38.6/cpm/CPM_0.38.6.cmake
 
 %files
 %{_bindir}/*
