@@ -20,6 +20,9 @@ BuildOption: -DCPM_SOURCE_CACHE=$(pwd)/../CPM.cmake-0.38.6
 BuildRequires: cmake(fmt)
 BuildRequires: cmake(cxxopts)
 
+%patchlist
+ada-2.9.0-no-downloads.patch
+
 %description
 C++ URL parser library
 

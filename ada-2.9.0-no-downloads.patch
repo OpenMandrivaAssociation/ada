@@ -1,0 +1,17 @@
+diff -up ada-2.9.0/cmake/CPM.cmake.omv~ ada-2.9.0/cmake/CPM.cmake
+--- ada-2.9.0/cmake/CPM.cmake.omv~	2024-08-04 20:33:06.043239654 +0200
++++ ada-2.9.0/cmake/CPM.cmake	2024-08-04 20:33:16.075348035 +0200
+@@ -16,9 +16,9 @@ endif()
+ # Expand relative path. This is important if the provided path contains a tilde (~)
+ get_filename_component(CPM_DOWNLOAD_LOCATION ${CPM_DOWNLOAD_LOCATION} ABSOLUTE)
+ 
+-file(DOWNLOAD
+-     https://github.com/cpm-cmake/CPM.cmake/releases/download/v${CPM_DOWNLOAD_VERSION}/CPM.cmake
+-     ${CPM_DOWNLOAD_LOCATION} EXPECTED_HASH SHA256=${CPM_HASH_SUM}
+-)
++#file(DOWNLOAD
++#     https://github.com/cpm-cmake/CPM.cmake/releases/download/v${CPM_DOWNLOAD_VERSION}/CPM.cmake
++#     ${CPM_DOWNLOAD_LOCATION} EXPECTED_HASH SHA256=${CPM_HASH_SUM}
++#)
+ 
+ include(${CPM_DOWNLOAD_LOCATION})
