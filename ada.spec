@@ -6,12 +6,19 @@ Name: ada
 Version: 2.9.0
 Release: 1
 Source0: https://github.com/ada-url/ada/archive/refs/tags/v%{version}.tar.gz
+Source1: https://github.com/cpm-cmake/CPM.cmake/archive/refs/tags/v0.38.6.tar.gz
 Summary: C++ URL parser library
 URL: https://github.com/ada-url/ada
 License: Apache-2.0
 Group: System/Libraries
 BuildSystem: cmake
 BuildOption: -DADA_TESTING:BOOL=OFF
+BuildOption: -DCPM_USE_LOCAL_PACKAGES:BOOL=ON
+BuildOption: -DCPM_LOCAL_PACKAGES_ONLY:BOOL=ON
+BuildOption: -DFETCHCONTENT_FULLY_DISCONNECTED:BOOL=ON
+BuildOption: -DCPM_SOURCE_CACHE=$(pwd)/../CPM.cmake-0.38.6
+BuildRequires: cmake(fmt)
+BuildRequires: cmake(cxxopts)
 
 %description
 C++ URL parser library
@@ -31,10 +38,10 @@ Requires: %{libname} = %{EVRD}
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
 
-%build -p
-# The build system automatically runs tests, so it needs to
-# be able to locate the libada.so.* currently being built
-#xport LD_LIBRARY_PATH=$(pwd)/_OMV_rpm_build/src
+%prep -a
+# see cmake/CPM.cmake for what needs to be done here to
+# prevent a download
+tar xf %{S:1}
 
 %files
 %{_bindir}/*
@@ -45,5 +52,4 @@ Development files (Headers etc.) for %{name}.
 %files -n %{devname}
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/pkgconfig/*
 %{_libdir}/cmake/*
