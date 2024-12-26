@@ -4,7 +4,7 @@
 
 Name: ada
 Version: 2.9.2
-Release: 1
+Release: 2
 Source0: https://github.com/ada-url/ada/archive/refs/tags/v%{version}.tar.gz
 Source1: https://github.com/cpm-cmake/CPM.cmake/archive/refs/tags/v0.38.6.tar.gz
 Summary: C++ URL parser library
