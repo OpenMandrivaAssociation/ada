@@ -3,7 +3,7 @@
 %define devname %mklibname ada -d
 
 Name: ada
-Version: 3.3.0
+Version: 4.0.0
 Release: 1
 Source0: https://github.com/ada-url/ada/archive/refs/tags/v%{version}.tar.gz
 Source1: https://github.com/cpm-cmake/CPM.cmake/archive/refs/tags/v0.38.6.tar.gz
