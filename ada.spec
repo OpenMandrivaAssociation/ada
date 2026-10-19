@@ -1,4 +1,4 @@
-%define major 3
+%define major 4
 %define libname %mklibname ada
 %define devname %mklibname ada -d
 
@@ -6,21 +6,17 @@ Name: ada
 Version: 4.0.0
 Release: 1
 Source0: https://github.com/ada-url/ada/archive/refs/tags/v%{version}.tar.gz
-Source1: https://github.com/cpm-cmake/CPM.cmake/archive/refs/tags/v0.38.6.tar.gz
 Summary: C++ URL parser library
 URL: https://github.com/ada-url/ada
 License: Apache-2.0
 Group: System/Libraries
 BuildSystem: cmake
 BuildOption: -DADA_TESTING:BOOL=OFF
-BuildOption: -DCPM_DOWNLOAD_ALL:BOOL=OFF
-BuildOption: -DCPM_USE_LOCAL_PACKAGES:BOOL=ON
-BuildOption: -DCPM_LOCAL_PACKAGES_ONLY:BOOL=ON
-BuildOption: -DFETCHCONTENT_FULLY_DISCONNECTED:BOOL=ON
-BuildOption: -DCPM_SOURCE_CACHE=$(pwd)/../CPM.cmake-0.38.6
-BuildRequires: cmake(fmt)
-BuildRequires: cmake(cxxopts)
-BuildRequires: git-core
+BuildOption: -DADA_TOOLS:BOOL=OFF
+BuildOption: -DADA_BENCHMARKS:BOOL=OFF
+BuildOption: -DADA_USE_SIMDUTF:BOOL=OFF
+BuildOption: -DBUILD_SHARED_LIBS:BOOL=ON
+BuildRequires: cmake
 
 %patchlist
 
@@ -41,13 +37,6 @@ Requires: %{libname} = %{EVRD}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
-
-%prep -a
-# see cmake/CPM.cmake for what needs to be done here to
-# prevent a download
-tar xf %{S:1}
-mkdir CPM.cmake-0.38.6/cpm
-cp CPM.cmake-0.38.6/cmake/CPM.cmake CPM.cmake-0.38.6/cpm/CPM_0.38.6.cmake
 
 %files -n %{libname}
 %{_libdir}/*.so.%{major}*
